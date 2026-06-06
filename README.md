@@ -1,4 +1,3 @@
-# California-WildFire-Prediction
 # Predicting California Wildfires
 
 Using machine learning to predict wildfire occurrence across 3, 7, and 14-day horizons at the climate-division level in California.
