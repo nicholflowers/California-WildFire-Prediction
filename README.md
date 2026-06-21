@@ -23,15 +23,19 @@ Final merged dataset: 20,710 rows, 108 features.
 
 ## 🤖 Models
 
-Five model families were compared (Logistic Regression baseline, Feedforward Neural Network, Random Forest, XGBoost, and a time-series approach), all evaluated with temporal train/validation/test splits to preserve chronological ordering and prevent information leakage.
+Five model families were compared, all evaluated with temporal train/validation/test splits to preserve chronological ordering and prevent information leakage:
 
-My contribution was the **XGBoost** model, tuned with randomized search (20 iterations per horizon) over `n_estimators`, `max_depth`, `learning_rate`, regularization, and subsampling parameters.
+- Logistic Regression (baseline)
+- Feedforward Neural Network (Optuna-tuned)
+- Random Forest (with PCA and SMOTE variants)
+- XGBoost (randomized search tuning)
+- ARIMA/SARIMAX (time series)
 
 ## 📈 Results
 
 Across model families, accuracy at the 3-day horizon landed in the ~50% range, and performance degraded steadily as the horizon lengthened. The fact that very different architectures clustered at a similar ceiling points to the available features and data quality as the binding constraint, not the choice of model.
 
-XGBoost showed this pattern clearly across horizons:
+XGBoost illustrated the horizon effect clearly:
 
 | Horizon | Accuracy |
 |---------|----------|
@@ -39,7 +43,7 @@ XGBoost showed this pattern clearly across horizons:
 | 7-day   | 40.6%    |
 | 14-day  | 33.8%    |
 
-It outperformed the logistic-regression baseline at every horizon and produced the most balanced precision-recall tradeoff among the models tested. Temperature and relative humidity emerged as the strongest predictors.
+Temperature and relative humidity emerged as the strongest predictors.
 
 **Key findings:**
 
@@ -50,5 +54,5 @@ It outperformed the logistic-regression baseline at every horizon and produced t
 
 ## 🛠️ Stack
 
-Python, XGBoost, scikit-learn, GeoPandas, Shapely, Optuna, SMOTE
+Python, XGBoost, scikit-learn, SMOTE
 
