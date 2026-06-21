@@ -44,7 +44,7 @@ XGBoost illustrated the horizon effect clearly:
 | 7-day   | 40.6%    |
 | 14-day  | 33.8%    |
 
-Temperature and relative humidity emerged as the strongest predictors across multiple model families.
+
 
 **Key findings:**
 - Temperature and relative humidity emerged as the strongest predictors across multiple model families.
