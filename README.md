@@ -47,7 +47,7 @@ XGBoost illustrated the horizon effect clearly:
 Temperature and relative humidity emerged as the strongest predictors across multiple model families.
 
 **Key findings:**
-
+- Temperature and relative humidity emerged as the strongest predictors across multiple model families.
 - Forecasting performance declined sharply as the prediction horizon increased.
 - Temporal train/validation/test splits were essential for realistic estimates and for avoiding information leakage.
 - Class imbalance was a persistent challenge given the low base rate of wildfire events; mitigation techniques including SMOTE were evaluated as part of the modeling process.
