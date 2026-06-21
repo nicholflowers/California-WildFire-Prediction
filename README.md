@@ -31,9 +31,10 @@ Five model families were compared, all evaluated with temporal train/validation/
 - XGBoost (randomized search tuning)
 - ARIMA/SARIMAX (time series)
 
+
 ## 📈 Results
 
-Across model families, accuracy at the 3-day horizon landed in the ~50% range, and performance degraded steadily as the horizon lengthened. The fact that very different architectures clustered at a similar ceiling points to the available features and data quality as the binding constraint, not the choice of model.
+Across Logistic Regression, Neural Networks, Random Forest, XGBoost, and ARIMA/SARIMAX, accuracy at the 3-day horizon converged around similar levels and declined at longer horizons. The fact that very different architectures clustered at a similar ceiling points to the available feature signal and data quality as the binding constraint, not model choice.
 
 XGBoost illustrated the horizon effect clearly:
 
@@ -43,16 +44,12 @@ XGBoost illustrated the horizon effect clearly:
 | 7-day   | 40.6%    |
 | 14-day  | 33.8%    |
 
-Temperature and relative humidity emerged as the strongest predictors.
+Temperature and relative humidity emerged as the strongest predictors across multiple model families.
 
 **Key findings:**
 
 - Forecasting performance declined sharply as the prediction horizon increased.
-- Temporal validation was essential for realistic performance estimates.
-- Class imbalance was a persistent challenge given the low base rate of wildfire events.
-- The shared ~50% ceiling across architectures indicates the bottleneck is data and feature quality rather than model selection.
-
-## 🛠️ Stack
-
-Python, XGBoost, scikit-learn, SMOTE
+- Temporal train/validation/test splits were essential for realistic estimates and for avoiding information leakage.
+- Class imbalance was a persistent challenge given the low base rate of wildfire events; mitigation techniques including SMOTE were evaluated as part of the modeling process.
+- The shared ~50% accuracy ceiling across architectures indicates the bottleneck is data and feature quality rather than model selection.
 
