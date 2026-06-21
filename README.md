@@ -10,8 +10,7 @@ The project compares multiple model families, explores the impact of geospatial 
 
 The prediction task is an 8-class classification problem consisting of 7 CONUS climate divisions and a no-fire class. A random classifier would achieve 12.5% accuracy.
 
-📊 Data
-Sources
+📊 Data Sources
 Weather data: California Weather and Fire Prediction Dataset (1984-2025) from Zenodo
 Fire records: Cal Fire historical fire perimeters (1984-2025)
 Localized weather: NASA POWER meteorological data
