@@ -1,16 +1,16 @@
 # Predicting California Wildfires
 
-**Can machine learning predict not just whether a wildfire will occur, but where in California it will occur, and how far ahead?**
+**Can machine learning predict not just whether a wildfire will occur, but where in California it will occur and how far ahead?**
 
 ---
 
 ## 📌 Overview
 
-California wildfires cause billions in damage annually and are intensifying with climate change. Short-term prediction has real operational value: it supports early warning, informs how firefighting resources are positioned, and gives policymakers something to plan against.
+California wildfires cause billions in damage annually and are intensifying with climate change. Short-term prediction has real operational value: it supports early warning, informs how firefighting resources are positioned and gives policymakers something to plan against.
 
-This project asks whether machine learning can forecast wildfire occurrence at the **climate-division level** across 3, 7, and 14-day horizons, using more than 40 years of California weather and fire history.
+This project asks whether machine learning can forecast wildfire occurrence at the **climate-division level** across 3, 7 and 14-day horizons, using more than 40 years of California weather and fire history.
 
-The task is an **8-class classification problem**: seven CONUS climate divisions plus a no-fire class. A random classifier would land at 12.5%. Beyond raw accuracy, the project examines how quickly predictability decays as the forecast window lengthens, and what ultimately limits it.
+The task is an **8-class classification problem**: seven CONUS climate divisions plus a no-fire class. A random classifier would land at 12.5%. Beyond raw accuracy, the project examines how quickly predictability decays as the forecast window lengthens and what ultimately limits it.
 
 ## 📊 Data Sources
 
@@ -29,8 +29,8 @@ The core challenge was that these sources don't naturally align. Fire records ar
 
 - **Shapely** was used to find one fire centroid per climate division
 - **GeoPandas** geo-located labels and features to counties and climate divisions
-- Weather observations, fire history, and geographic assignments were merged into a single forecasting dataset
-- Engineered features included lagged weather variables (precipitation, temperature, wind speed), daily temperature range, and a wind-temperature ratio
+- Weather observations, fire history and geographic assignments were merged into a single forecasting dataset
+- Engineered features included lagged weather variables (precipitation, temperature, wind speed), daily temperature range and a wind-temperature ratio
 
 **Target variables:** fire in 3 days, fire in 7 days, fire in 14 days.
 
@@ -63,11 +63,11 @@ Five model families were compared. All used **temporal train/validation/test spl
 
 *Accuracy. Random baseline = 12.5%.*
 
-Every model substantially beat random guessing, confirming genuine predictive signal. But the more informative result is what happened at the top: **four architectures with very different inductive biases (a linear model, a neural network, and two tree ensembles) all converged near the same ~50% ceiling at the 3-day horizon**, and all degraded sharply as the horizon lengthened.
+Every model substantially beat random guessing, confirming genuine predictive signal. But the more informative result is what happened at the top: **four architectures with very different inductive biases (a linear model, a neural network and two tree ensembles) all converged near the same ~50% ceiling at the 3-day horizon** and all degraded sharply as the horizon lengthened.
 
 When approaches that different fail in the same place, the model isn't the problem. **The binding constraint is the data**: the available features and the scarcity of positive fire cases, not the choice of algorithm.
 
-> **A note on ARIMA/SARIMAX.** ARIMA reported substantially higher accuracy (67.2% / 65.9% / 65.0%) with almost no degradation across horizons, a pattern inconsistent with every other model and with the underlying difficulty of the task. This pointed to a flaw in that model's evaluation, which the team was unable to resolve before the project deadline. Those results are excluded from the conclusions above.
+**Note:** ARIMA/SARIMAX reported substantially higher accuracy (67.2% / 65.9% / 65.0%) with almost no degradation across horizons. That pattern is inconsistent with every other model and with the underlying difficulty of the task. It pointed to a flaw in that model's evaluation, which the team was unable to resolve before the project deadline. Those results are excluded from the conclusions above.
 
 **Key findings:**
 
@@ -85,4 +85,4 @@ When approaches that different fail in the same place, the model isn't the probl
 
 ## 🧰 Stack
 
-Python, XGBoost, scikit-learn, TensorFlow/Keras, Optuna, statsmodels, GeoPandas, Shapely, pandas, Matplotlib, Seaborn.tion.
+Python, XGBoost, scikit-learn, TensorFlow/Keras, Optuna, statsmodels, GeoPandas, Shapely, pandas, Matplotlib, Seaborn.
