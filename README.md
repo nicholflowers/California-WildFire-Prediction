@@ -54,16 +54,18 @@ Five model families were compared. All used **temporal train/validation/test spl
 
 ## 📈 Results
 
+Two reference points matter here. **Random guessing** across 8 classes lands at 12.5%, the floor any model must clear to be doing anything at all. **Logistic regression** is the modeling baseline, the simplest real approach, and what the more complex models had to beat to justify their added complexity.
+
 | Model | 3-day | 7-day | 14-day |
 |---|---|---|---|
-| Logistic Regression (baseline) | 45.3% | 32.0% | 23.2% |
+| Logistic Regression (modeling baseline) | 45.3% | 32.0% | 23.2% |
 | Feedforward Neural Network | 50.8% | 36.7% | 25.7% |
 | Random Forest | 53.3% | 40.5% | 34.1% |
 | XGBoost | 54.2% | 40.6% | 33.8% |
 
-*Accuracy. Random baseline = 12.5%.*
+*Accuracy. Random guessing over 8 classes = 12.5%.*
 
-Every model substantially beat random guessing, confirming genuine predictive signal. But the more informative result is what happened at the top: **four architectures with very different inductive biases (a linear model, a neural network and two tree ensembles) all converged near the same ~50% ceiling at the 3-day horizon** and all degraded sharply as the horizon lengthened.
+Every model cleared random guessing by a wide margin, confirming there is real predictive signal in the data. But the more informative result is what happened at the top: **four architectures with very different inductive biases (a linear model, a neural network and two tree ensembles) all converged near the same ~50% ceiling at the 3-day horizon** and all degraded sharply as the horizon lengthened.
 
 When approaches that different fail in the same place, the model isn't the problem. **The binding constraint is the data**: the available features and the scarcity of positive fire cases, not the choice of algorithm.
 
